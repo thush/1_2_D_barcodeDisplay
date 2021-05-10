@@ -1,6 +1,6 @@
 import pygame
 
-# Define some colors
+# Define Desired ColorCodes
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -15,14 +15,14 @@ Blue = (0, 0, 255)
 WIDTH = 2
 HEIGHT = 2
 
-EINK_HEIGHT = 127
+EINK_HEIGHT = 295
 EINK_WIDTH = 295
 
 # This sets the margin between each cell
-MARGIN = 1
+MARGIN = 0
 
 def Eink_show( data ):
-   print("Hello")
+   print("BarcodeSet")
    grid = []
    for row in range(128):
        # Add an empty array that will hold each cell
@@ -36,10 +36,10 @@ def Eink_show( data ):
    i = 0
    j = 0
    #if False:
-   print(len(grid))
+   # print("Length Of GRID :",len(grid))
    for row in data:
        for cell in row:
-           print(i, ' ', j)
+           # print(i, ',', j)
            if cell == 0:
                grid[i][j] = 0
            else:
@@ -52,11 +52,11 @@ def Eink_show( data ):
    # Initialize pygame
    pygame.init()
    # Set the HEIGHT and WIDTH of the screen
-   WINDOW_SIZE = [900, 900]  # [889,385]#, 592]
+   WINDOW_SIZE = [600, 600]  # [889,385]#, 592]
    screen = pygame.display.set_mode(WINDOW_SIZE)
 
    # Set title of screen
-   pygame.display.set_caption("Eink 128x296")
+   pygame.display.set_caption("Eink 296x296")
 
    # Loop until the user clicks the close button.
    done = False
@@ -66,20 +66,19 @@ def Eink_show( data ):
 
    # Set the screen background
    # screen.fill(BLACK)
-   screen.fill(BLACK)
+   screen.fill(WHITE)
 
    # Draw the grid
    for row in range(128):
        for column in range(296):
            color = BLACK
            if grid[row][column] == 1:
-               print('1')
                # print('1', end=' ')
                # color = RED
                color = WHITE
            else:
-               print('0')
-               # print('0',end=' ')
+               # print('0')
+               print('0',end=' ')
            pygame.draw.rect(screen,
                             color,
                             [(MARGIN + WIDTH) * column + MARGIN,
@@ -107,13 +106,12 @@ def Eink_show( data ):
                if column > EINK_WIDTH:
                    column = EINK_WIDTH
                # Set that location to one
-               print(row, column)
+               # print(row, column)
                grid[row][column] = 1
-               print("Click ", pos, "Grid coordinates: ", row, column)
+               # print("Click ", pos, "Grid coordinates: ", row, column)
    # Be IDLE friendly. If you forget this line, the program will 'hang'
    # on exit.
    pygame.quit()
    return
-# Eink_show('Hello Display')
-# Eink_show('hello')
-# pygame.quit()
+
+pygame.quit()
