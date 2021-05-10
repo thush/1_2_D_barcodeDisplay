@@ -41,5 +41,5 @@ Build_url ='https://artifactory-blr.zebra.com/artifactory/remote-ny-emc-dev/andr
 devicesToFlash = ['19021522508736', '182015225D0170', '182015225D0264']
 
 
-Username = 'rqvn43@zebra.com'
-Password = 'Colombo_2573'
+Username = ''
+Password = ''
